@@ -1,0 +1,35 @@
+.transfer {
+    display: flex;
+    flex-direction: column;
+  
+    gap: 10px;
+    margin: 0;
+}
+
+.heading {
+    color: rgb(74, 74, 74);
+        font-family: Open Sans;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 12px;
+        letter-spacing: 0.5px;
+        text-align: left;
+        text-transform: uppercase;
+        padding: 5px;
+}
+.transfer-panel {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.field {
+    color: rgb(74, 74, 74);
+        font-family: Open Sans;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0px;
+        text-align: left;
+        margin: 0;
+}
