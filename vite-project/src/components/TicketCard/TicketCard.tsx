@@ -1,13 +1,16 @@
 import styles from './TicketCard.module.css';
-export default function TicketCard() {
+import { TicketCardProps } from './TicketCard.props';
+
+
+export default function TicketCard(props: TicketCardProps) {
     return (
         <div className={styles["ticket-card"]}>
             <div className={styles["header"]}>
-                <div className={styles["price"]}>13400 <span>Р</span></div>
+                <div className={styles["price"]}>{props.price}<span>Р</span></div>
                 <div>Company Logo</div>
             </div>
           <div className={styles["flights"]}>
-            <div>Route</div>
+            <div>{props.segments}</div>
             <div>В пути</div>
             <div>пересадки</div>
             <div>время прибытия</div>
