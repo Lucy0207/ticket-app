@@ -29,7 +29,7 @@ export const flightSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(getSearchId.fulfilled, (state, action) => {
-            state.tickets.push(action.payload.tickets)
+            state.tickets = action.payload.tickets;
         })
     }
 })
@@ -38,13 +38,14 @@ export const getSearchId = createAsyncThunk(
     'flights/getSearchId',
     async () => {
         const res = await axios.get("https://aviasales-test-api.kata.academy/search")
-        console.log(res.data)
+        // console.log(res.data)
         const {data} = await axios.get("https://aviasales-test-api.kata.academy/tickets", {
             params: {
                 searchId: res.data.searchId
             }
         })
     
+   console.log(data)
    return data;
     }
 )

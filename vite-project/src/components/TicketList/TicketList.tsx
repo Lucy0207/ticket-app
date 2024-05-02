@@ -4,10 +4,13 @@ import { getSearchId } from "../../store/flights.slice";
 import { useEffect } from "react";
 import { AppDispatcher, RootState } from "../../store/store";
 import { useDispatch, useSelector } from "react-redux";
+import { v4 as uuidv4 } from 'uuid';
+
 
 export default function TicketList() {
     const dispatch = useDispatch<AppDispatcher>()
     const tickets = useSelector((state: RootState) => state.flights.tickets)
+    console.log(tickets)
 
     useEffect(() => {
         dispatch(getSearchId())
@@ -15,9 +18,12 @@ export default function TicketList() {
 
     return(
         <ul className={styles['list']}>
-            {tickets.map(ticket => (
+            {tickets.length > 0 && tickets.map(ticket => (
                 <TicketCard 
-                price={ticket.price}/>
+                key={uuidv4()}
+                price={ticket.price}
+                carrier={ticket.carrier}
+                segments={ticket.segments} />
             ))}
            
             </ul>
