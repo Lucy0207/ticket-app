@@ -1,8 +1,15 @@
+import cn from 'classnames';
 import { ButtonProps } from "./Button.props";
 import styles from "./Button.module.css";
 
-export default function Button({children}: ButtonProps) {
+export default function Button({children, className, appearance='small', ...props}: ButtonProps) {
     return(
-        <button className={styles["filter-button"]}>{children}</button>
+        <button 
+        className={cn(styles['filter-button'], className, {
+				[styles['small']] : appearance === 'small',
+				[styles['big']] : appearance === 'big'
+			})} {...props}>
+            {children}
+            </button>
     )
 }

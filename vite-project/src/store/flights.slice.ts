@@ -17,16 +17,25 @@ export interface Flight {
 }
 
 export interface FlightList {
-    tickets: Flight[]
+    tickets: Flight[],
+     flightsPerPage: number,
+ 
+   
 }
 const initialState: FlightList = {
-    tickets: []
+    tickets: [],
+    flightsPerPage: 5,
+        
 }
 
 export const flightSlice = createSlice({
     name: 'flights',
     initialState,
-    reducers: {},
+    reducers: {
+       showMoreTickets: (state) => {
+            state.flightsPerPage += 5;
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(getSearchId.fulfilled, (state, action) => {
             state.tickets = action.payload.tickets;
