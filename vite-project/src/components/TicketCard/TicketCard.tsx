@@ -1,13 +1,23 @@
+
+
 import Segments from '../Segments/Segments';
 import styles from './TicketCard.module.css';
 import { TicketCardProps } from './TicketCard.props';
 
 
+
 export default function TicketCard(props: TicketCardProps) {
+    const price = props.price;
+    const priceString = String(price).split('');
+    priceString.splice(-3, 0, ' ');
+    const finalPrice = priceString.join('');
+
+
+
     return (
         <div className={styles["ticket-card"]}>
             <div className={styles["header"]}>
-                <div className={styles["price"]}>{props.price}<span>Р</span></div>
+                <div className={styles["price"]}>{finalPrice}<span> Р</span></div>
                 <div>{props.carrier}</div>
             </div>
             <Segments segments={props.segments}/>

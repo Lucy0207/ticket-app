@@ -4,4 +4,26 @@
     grid-template-rows: repeat(3, 1fr);
     grid-gap: 2px;
     margin-top: 20px;
+    color: var(--primary-color);
+    font-family: Open Sans;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    letter-spacing: 0px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+
+.time {
+    display: flex;
+
+}
+
+.grey {
+    color: var(--text-secondary-color);
+}
+
+.lowercase {
+    text-transform: lowercase;
 }
