@@ -1,4 +1,3 @@
-import {Fragment} from "react"
 import {v4 as uuidv4} from "uuid"
 import moment from "moment"
 
@@ -27,7 +26,7 @@ const Segments: React.FC<SegmentsProps> = ({segments}) => {
 
 
                 return (
-                <Fragment key={uuidv4()}>  
+                <div key={uuidv4()} className={styles['grids']}>  
         
                      <div className={styles['grey']}>{segment.destination} - {segment.origin}</div>
                     <div className={styles['grey']}>В пути</div>
@@ -39,7 +38,7 @@ const Segments: React.FC<SegmentsProps> = ({segments}) => {
                      </div>
                     <div className={styles['lowercase']}>{durationShow}</div>
                     <div>{segment.stops.join(", ")}</div>
-                    </Fragment>)
+                    </div>)
             }
                 )}
             

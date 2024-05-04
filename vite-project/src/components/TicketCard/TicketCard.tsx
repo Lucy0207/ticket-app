@@ -11,6 +11,7 @@ export default function TicketCard(props: TicketCardProps) {
     const priceString = String(price).split('');
     priceString.splice(-3, 0, ' ');
     const finalPrice = priceString.join('');
+   
 
 
 
@@ -18,7 +19,7 @@ export default function TicketCard(props: TicketCardProps) {
         <div className={styles["ticket-card"]}>
             <div className={styles["header"]}>
                 <div className={styles["price"]}>{finalPrice}<span> Р</span></div>
-                <div>{props.carrier}</div>
+                <img src={props.carrier ? `https://pics.avs.io/99/36/${props.carrier}.png` : props.carrier} />
             </div>
             <Segments segments={props.segments}/>
         </div>    

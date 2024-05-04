@@ -1,9 +1,9 @@
 .flights {
-    display: grid;
+   /*  display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    grid-gap: 2px;
-    margin-top: 20px;
+    grid-gap: 2px; */
+    /* margin-top: 20px; */
     color: var(--primary-color);
     font-family: Open Sans;
     font-size: 14px;
@@ -17,7 +17,7 @@
 
 .time {
     display: flex;
-
+    
 }
 
 .grey {
@@ -26,4 +26,12 @@
 
 .lowercase {
     text-transform: lowercase;
+}
+
+.grids {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 2px;
+    margin-bottom: 10px;
 }
