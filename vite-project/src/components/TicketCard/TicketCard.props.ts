@@ -1,6 +1,6 @@
 export interface TicketCardProps {
     price: number,
-      carrier: string,
+    carrier: string,
     segments: Array<SegmentObject>
 }
 

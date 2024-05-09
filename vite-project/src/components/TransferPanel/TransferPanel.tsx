@@ -1,26 +1,32 @@
-import { useState } from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { Checkbox } from '../Checkbox/Checkbox'
 import styles from './TransferPanel.module.css'
+import { flightsAction } from '../../store/flights.slice';
+import { AppDispatcher, RootState } from '../../store/store';
 
 export default function TransferPanel() {
     const transferOptions = ['Без пересадок', '1 пересадка', '2 пересадки', '3 пересадки']
+    const dispatch = useDispatch<AppDispatcher>()
+    const selected = useSelector((s: RootState) => s.flights.selected)
 
-    const [selected, setSelected] = useState<string[]>([]);
+ 
+    console.log(selected)
 
     function handleSelect(checkSelect: boolean, name: string): void {
   if (checkSelect) {
-    setSelected([...selected, name]);
+    dispatch(flightsAction.addToSelect(name))
   } else {
-    setSelected(selected.filter((item) => item !== name));
+    dispatch(flightsAction.removeFromSelect(name));
   }
 }
 
-  function selectAll(checkSelect: boolean) {
+  function selectAll(checkSelect: boolean): void {
     if(checkSelect) {
-        setSelected(transferOptions);
+        dispatch(flightsAction.selectAll(transferOptions))
     } else {
-        setSelected([])
+        dispatch(flightsAction.unselectAll())
     }
     
   }

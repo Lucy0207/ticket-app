@@ -1,4 +1,5 @@
 import {  createSlice } from "@reduxjs/toolkit";
+import { PayloadAction } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -19,14 +20,23 @@ export interface Flight {
 export interface FlightList {
     tickets: Flight[],
      flightsPerPage: number,
+     selected: string[],
+     filter: string
  
    
 }
+type SelectAllPayload = string[];
+
+
 const initialState: FlightList = {
     tickets: [],
     flightsPerPage: 5,
+    selected: [] as SelectAllPayload,
+    filter: 'cheap'
         
 }
+
+
 
 export const flightSlice = createSlice({
     name: 'flights',
@@ -34,6 +44,21 @@ export const flightSlice = createSlice({
     reducers: {
        showMoreTickets: (state) => {
             state.flightsPerPage += 5;
+        },
+        addToSelect: (state, action: PayloadAction<string>) => {
+            state.selected.push(action.payload)
+        },
+        removeFromSelect: (state, action: PayloadAction<string>) => {
+            state.selected = state.selected.filter((item) => item !== action.payload)
+        },
+        selectAll: (state, action: PayloadAction<SelectAllPayload>) => {
+            state.selected = action.payload;
+        },
+        unselectAll: (state) => {
+            state.selected = []
+        },
+        setFilter: (state, action: PayloadAction<string>) => {
+            state.filter = action.payload
         }
     },
     extraReducers: (builder) => {
