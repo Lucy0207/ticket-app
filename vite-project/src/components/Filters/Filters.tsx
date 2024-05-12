@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import Button from "../Button/Button";
 import styles from "./Filters.module.css"
 import { AppDispatcher } from "../../store/store";
-import { flightsAction } from "../../store/flights.slice";
+import { filterAction } from "../../store/filter.slice";
 
 export default function Filters() {
 
@@ -16,7 +16,7 @@ export default function Filters() {
 
 
  function handleFilterClick(filter: string) {
-    dispatch(flightsAction.setFilter(filter));
+    dispatch(filterAction.setFilter(filter));
   }
   
     return (

@@ -19,7 +19,7 @@
 }
 
 .check__input:checked+.check__box {
-    background-image: url(public/Checkbox.svg);
+    background-image: url(/Checkbox.svg);
 }
 
 .check__box {

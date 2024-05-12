@@ -12,7 +12,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 export default function TicketList({tickets}: TicketListProps ) {
     const dispatch = useDispatch<AppDispatcher>();
-    const filter = useSelector((s: RootState) => s.flights.filter)
+    const filter = useSelector((s: RootState) => s.filters.filter);
+    const selected = useSelector((s: RootState) => s.transfers.selected)
    
     
     useEffect(() => {
@@ -43,7 +44,8 @@ const sortedTickets = useMemo(() => {
 
     return(
         <ul className={styles['list']}>
-            {tickets.length > 0 && sortedTickets.map(ticket => (
+          {selected.length === 0 ? <p>Рейсов, подходящих под заданные фильтры, не найдено</p> :
+            tickets.length > 0 && sortedTickets.map(ticket => (
                 <TicketCard 
                 key={uuidv4()}
                 price={ticket.price}
