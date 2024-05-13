@@ -5,23 +5,28 @@ import styles from './TransferPanel.module.css'
 import { AppDispatcher, RootState } from '../../store/store';
 import { transferAction } from '../../store/transfer.slice';
 
-export default function TransferPanel() {
+
+
  type TransferValue = {
   description: string;
-  value: string;
+  value: number;
 };
-    const transferOptions = ['Без пересадок', '1 пересадка', '2 пересадки', '3 пересадки']
+
+export default function TransferPanel() {
+
+const transferOptions = ['Без пересадок', '1 пересадка', '2 пересадки', '3 пересадки']
+
 const transferValues: TransferValue[] = [
-  { description: "Без пересадок", value: "0" },
-  { description: "1 пересадка", value: "1" },
-  { description: "2 пересадки", value: "2" },
-  { description: "3 пересадки", value: "3" }
+  { description: "Без пересадок", value: 0 },
+  { description: "1 пересадка", value: 1},
+  { description: "2 пересадки", value: 2 },
+  { description: "3 пересадки", value: 3}
 ];
     const dispatch = useDispatch<AppDispatcher>()
     const selected = useSelector((s: RootState) => s.transfers.selected)
-
- 
     console.log(selected)
+
+
 
     function handleSelect(checkSelect: boolean, name: string): void {
   if (checkSelect) {
@@ -40,19 +45,23 @@ const transferValues: TransferValue[] = [
     
   }
 
+ 
+
 return (
     <div className={styles["transfer-panel"]}>
         <p className={styles["heading"]}>Количество пересадок</p>
         <form className={styles["transfer"]}>
-            <Checkbox name="all" checkSelect={selected.length === transferOptions.length} updateValue={selectAll}>Все</Checkbox>
+            <Checkbox name="all" checkSelect={selected.length === transferOptions.length} updateValue={selectAll} value={4}>Все</Checkbox>
             {transferValues.map((item) => {
               const {description, value} = item
+             
                 return <Checkbox 
                 key={uuidv4()}
                 name={description}
                 checkSelect={selected.includes(description)}
                 value = {value}
                 updateValue={handleSelect}
+                
                 >
                     {description}
                     </Checkbox>

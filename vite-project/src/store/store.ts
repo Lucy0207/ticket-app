@@ -9,7 +9,8 @@ export const store = configureStore({
         filters: filterReducer,
         transfers: transferReducer
 
-    }
+    },
+    devTools: process.env.NODE_ENV !== 'production',
 })
 
 export type AppDispatcher = typeof store.dispatch;

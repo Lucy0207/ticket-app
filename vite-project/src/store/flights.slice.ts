@@ -1,5 +1,6 @@
-import {  createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import {  createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
+
 
 export interface Flight {
     price: number,
@@ -17,7 +18,8 @@ export interface Flight {
 
 export interface FlightList {
     tickets: Flight[],
-     flightsPerPage: number
+     flightsPerPage: number, 
+     filteredTickets: Flight[]
 }
  
 
@@ -26,6 +28,7 @@ export interface FlightList {
 const initialState: FlightList = {
     tickets: [],
     flightsPerPage: 5,
+    filteredTickets: []
           
 }
 
@@ -38,6 +41,24 @@ export const flightSlice = createSlice({
        showMoreTickets: (state) => {
             state.flightsPerPage += 5;
         },
+        showTransferTickets: (state, action: PayloadAction<number>) => {
+           const {tickets} = state;
+           const transferCount = action.payload;
+           const transfers = tickets.filter(ticket => {
+            const totalStops = ticket.segments.every(segment => segment.stops.length === transferCount);
+        return totalStops;
+           })
+          state.filteredTickets = [...state.filteredTickets, ...transfers];
+        },  
+        removeTransferTickets: (state, action: PayloadAction<number>) => {
+            const {filteredTickets} = state;
+            const transferCountOut = action.payload;
+            const transfersOut = filteredTickets.filter(ticket => {
+            const totalStops = ticket.segments.every(segment => segment.stops.length !== transferCountOut);
+        return totalStops;
+           })
+           state.filteredTickets = [...transfersOut]
+        }
         
     
     },
@@ -52,7 +73,7 @@ export const getSearchId = createAsyncThunk(
     'flights/getSearchId',
     async () => {
         const res = await axios.get("https://aviasales-test-api.kata.academy/search")
-        // console.log(res.data)
+       
         const {data} = await axios.get("https://aviasales-test-api.kata.academy/tickets", {
             params: {
                 searchId: res.data.searchId
