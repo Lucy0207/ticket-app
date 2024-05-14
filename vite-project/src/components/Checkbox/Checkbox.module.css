@@ -11,6 +11,9 @@
 
 .check {
     padding-left: 20px;
+    width: 100%;
+    height: 100%;
+    display: block;
 }
 
 .check__input {

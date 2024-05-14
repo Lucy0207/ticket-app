@@ -1,16 +1,14 @@
 .page {
-    margin: 10px 150px;
+    
     min-width: 754px;
 }
-.logo {
-    margin: 50px 300px;
-}
+
 .wrapper {
     display: flex;
+    justify-content: center;
     gap: 20px;
+    
+    
 }
 
-.content {
-    padding: 15px;
-}
 

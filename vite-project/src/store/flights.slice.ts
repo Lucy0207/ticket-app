@@ -44,6 +44,9 @@ export const flightSlice = createSlice({
         showTransferTickets: (state, action: PayloadAction<number>) => {
            const {tickets} = state;
            const transferCount = action.payload;
+           if (transferCount === 4) {
+            state.filteredTickets = [...state.tickets]
+           }
            const transfers = tickets.filter(ticket => {
             const totalStops = ticket.segments.every(segment => segment.stops.length === transferCount);
         return totalStops;
@@ -80,7 +83,7 @@ export const getSearchId = createAsyncThunk(
             }
         })
     
-   console.log(data)
+
    return data;
     }
 )

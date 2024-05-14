@@ -46,12 +46,13 @@ const sortedTickets = useMemo(() => {
 
 const transferredTickets = produceTickets(sortedTickets)
 const visibleFlights = transferredTickets.slice(0, flightsPerPage)
+console.log(visibleFlights)
 
 
     return(
         <ul className={styles['list']}>
         {selected.length === 0 ? <p>Рейсов, подходящих под заданные фильтры, не найдено</p> : visibleFlights}
-          {selected.length < 4 && selected.length > 0 && visibleFlights} 
+          {/* {selected.length <= 4 && selected.length > 0 && visibleFlights}  */}
         </ul>
         
     )

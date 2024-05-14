@@ -22,19 +22,19 @@ export default function App() {
 
     return (
         <div className={styles['page']}>
-            <div className={styles["logo"]}>
+            <div >
                 <Logo />
             </div>
             <div className={styles["wrapper"]}>
                  <div className={styles['transfer-panel']}>
                  <TransferPanel />
-            </div>
+                </div>
            
             <div className={styles["content"]}>
                 
             <Filters />
             <TicketList />
-            <Button appearance="big" onClick={showMoreTickets}>показать еще 5 билетов</Button>
+            <Button appearance="big" onClick={showMoreTickets}>показать еще 5 билетов!</Button>
             </div>
             </div>
            

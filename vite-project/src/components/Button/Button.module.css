@@ -3,7 +3,6 @@
     height: 50px;
     box-sizing: border-box;
     border: 1px solid var(--separator-color);
-    border-radius: 5px;
     color: var(--primary-color);
     font-family: Open Sans;
     font-size: 12px;
@@ -14,9 +13,11 @@
     text-transform: uppercase;
 }
 
+
+
 .small {
 width: 168px;
-background: rgb(255, 255, 255);
+background-color: rgb(255, 255, 255);
 }
 
 .big {
@@ -29,4 +30,5 @@ color: var(--white-color);
     color: var(--white-color);
     background: var(--highlight-color);
 }
+
 
