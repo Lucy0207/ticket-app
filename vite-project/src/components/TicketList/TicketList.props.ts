@@ -1,5 +1,5 @@
-import { TicketCardProps } from "../TicketCard/TicketCard.props"
+import { TicketCardProps } from '../TicketCard/TicketCard.props';
 
 export interface TicketListProps {
-    tickets: TicketCardProps[]
+  tickets: TicketCardProps[];
 }

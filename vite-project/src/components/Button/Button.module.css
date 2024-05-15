@@ -1,34 +1,29 @@
 .filter-button {
-    
-    height: 50px;
-    box-sizing: border-box;
-    border: 1px solid var(--separator-color);
-    color: var(--primary-color);
-    font-family: Open Sans;
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 20px;
-    letter-spacing: 0.5px;
-    text-align: center;
-    text-transform: uppercase;
+  height: 50px;
+  box-sizing: border-box;
+  border: 1px solid var(--separator-color);
+  color: var(--primary-color);
+  font-family: Open Sans;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+  text-align: center;
+  text-transform: uppercase;
 }
 
-
-
 .small {
-width: 168px;
-background-color: rgb(255, 255, 255);
+  width: 168px;
+  background-color: rgb(255, 255, 255);
 }
 
 .big {
-width: 502px;
-background-color: var(--highlight-color);
-color: var(--white-color);
+  width: 502px;
+  background-color: var(--highlight-color);
+  color: var(--white-color);
 }
 
 .filter-button:hover {
-    color: var(--white-color);
-    background: var(--highlight-color);
+  color: var(--white-color);
+  background: var(--highlight-color);
 }
-
-

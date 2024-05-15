@@ -1,9 +1,11 @@
 .list {
-    margin-top: 20px;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-
+  margin-top: 20px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
+.no-flights-text {
+  margin: 48px auto;
+}

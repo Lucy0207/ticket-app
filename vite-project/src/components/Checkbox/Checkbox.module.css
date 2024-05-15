@@ -1,36 +1,37 @@
 .field {
-    color: rgb(74, 74, 74);
-    font-family: Open Sans;
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 20px;
-    letter-spacing: 0px;
-    text-align: left;
-    margin: 0;
+  color: rgb(74, 74, 74);
+  font-family: Open Sans;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin: 0;
+  padding: 3px;
 }
 
 .check {
-    padding-left: 20px;
-    width: 100%;
-    height: 100%;
-    display: block;
+  padding-left: 20px;
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .check__input {
-    appearance: none;
-    position: absolute;
+  appearance: none;
+  position: absolute;
 }
 
-.check__input:checked+.check__box {
-    background-image: url(/Checkbox.svg);
+.check__input:checked + .check__box {
+  background-image: url(/Checkbox.svg);
 }
 
 .check__box {
-    position: absolute;
-    width: 20px;
-    height: 20px;
+  position: absolute;
+  width: 20px;
+  height: 20px;
 
-    border: 1px solid rgb(154, 187, 206);
-    border-radius: 2px;
-    margin-left: -10px;
+  border: 1px solid rgb(154, 187, 206);
+  border-radius: 2px;
+  margin-left: -10px;
 }

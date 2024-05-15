@@ -1,14 +1,9 @@
 .page {
-    
-    min-width: 754px;
+  min-width: 754px;
 }
 
 .wrapper {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    
-    
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
-
-

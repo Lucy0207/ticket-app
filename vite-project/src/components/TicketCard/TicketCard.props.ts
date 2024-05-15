@@ -1,16 +1,15 @@
 export interface TicketCardProps {
-    price: number,
-    carrier: string,
-    segments: Array<SegmentObject>
+  price: number;
+  carrier: string;
+  segments: Array<SegmentObject>;
 }
 
-
-export type StopsArray = string[] | []
+export type StopsArray = string[] | [];
 
 export type SegmentObject = {
-    origin: string,
-    destination: string,
-    date: string,
-    duration: number,
-    stops: StopsArray
-}
+  origin: string;
+  destination: string;
+  date: string;
+  duration: number;
+  stops: StopsArray;
+};
