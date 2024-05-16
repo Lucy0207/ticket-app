@@ -1,5 +1,5 @@
-import Segments from '../Segments/Segments';
 import styles from './TicketCard.module.css';
+import Segments from '../Segments/Segments';
 import { TicketCardProps } from './TicketCard.props';
 
 export default function TicketCard(props: TicketCardProps) {

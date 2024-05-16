@@ -30,8 +30,7 @@
   position: absolute;
   width: 20px;
   height: 20px;
-
-  border: 1px solid rgb(154, 187, 206);
+ border: 1px solid rgb(154, 187, 206);
   border-radius: 2px;
   margin-left: -10px;
 }

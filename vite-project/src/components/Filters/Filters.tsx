@@ -1,8 +1,9 @@
+import styles from './Filters.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { filterAction } from '../../store/filter.slice';
 import { AppDispatcher, RootState } from '../../store/store';
 import Button from '../Button/Button';
-import styles from './Filters.module.css';
+
 
 export default function Filters() {
   const filterOptions = [

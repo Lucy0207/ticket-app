@@ -1,9 +1,10 @@
+import styles from './TransferPanel.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { AppDispatcher, RootState } from '../../store/store';
 import { transferAction } from '../../store/transfer.slice';
 import { Checkbox } from '../Checkbox/Checkbox';
-import styles from './TransferPanel.module.css';
+
 
 type TransferValue = {
   description: string;
@@ -21,7 +22,7 @@ export default function TransferPanel() {
   ];
   const dispatch = useDispatch<AppDispatcher>();
   const selected = useSelector((s: RootState) => s.transfers.selected);
-  console.log(selected);
+
 
   function handleSelect(checkSelect: boolean, name: string): void {
     if (checkSelect) {

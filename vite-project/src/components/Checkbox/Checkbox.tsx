@@ -1,7 +1,7 @@
+import styles from './Checkbox.module.css';
 import { useDispatch } from 'react-redux';
 import { flightsAction } from '../../store/flights.slice';
 import { AppDispatcher } from '../../store/store';
-import styles from './Checkbox.module.css';
 import { CheckboxProps } from './Checkbox.props';
 
 export function Checkbox({ name, value, checkSelect = false, updateValue = () => {}, children }: CheckboxProps) {

@@ -10,6 +10,10 @@
   letter-spacing: 0.5px;
   text-align: center;
   text-transform: uppercase;
+  &:hover {
+      color: var(--white-color);;
+      background: var(--highlight-color);
+    }
 }
 
 .small {
@@ -23,7 +27,4 @@
   color: var(--white-color);
 }
 
-.filter-button:hover {
-  color: var(--white-color);
-  background: var(--highlight-color);
-}
+

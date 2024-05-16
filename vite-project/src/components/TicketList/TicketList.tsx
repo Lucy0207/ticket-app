@@ -1,10 +1,11 @@
+import styles from './TicketList.module.css';
 import { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSearchId } from '../../store/flights.slice';
 import { AppDispatcher, RootState } from '../../store/store';
 import { produceTickets } from '../../utils/produceTickets';
 import ErrorIndicator from '../UI/Loader/ErrorIndicator/ErrorIndicator';
-import styles from './TicketList.module.css';
+
 
 export default function TicketList() {
   const dispatch = useDispatch<AppDispatcher>();
