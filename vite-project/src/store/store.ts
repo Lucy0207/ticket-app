@@ -9,6 +9,11 @@ export const store = configureStore({
     filters: filterReducer,
     transfers: transferReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      immutableCheck: false,
+      serializableCheck: false,
+    }),
   devTools: process.env.NODE_ENV !== 'production',
 });
 

@@ -1,11 +1,12 @@
 import styles from './TicketList.module.css';
 import { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getSearchId } from '../../store/flights.slice';
+import { getSearchId } from '../../services/searchService';
 import { AppDispatcher, RootState } from '../../store/store';
 import { produceTickets } from '../../utils/produceTickets';
 import ErrorIndicator from '../UI/Loader/ErrorIndicator/ErrorIndicator';
-
+import { sortTickets } from '../../utils/sortTickets';
+import Loader from '../UI/Loader/Loader';
 
 export default function TicketList() {
   const dispatch = useDispatch<AppDispatcher>();
@@ -20,39 +21,25 @@ export default function TicketList() {
     dispatch(getSearchId());
   }, [dispatch]);
 
-  const sortedTickets = useMemo(() => {
-    if (filter === 'cheap') {
-      return [...filteredTickets].sort((a, b) => a.price - b.price);
-    } else if (filter === 'fast') {
-      return [...filteredTickets].sort((a, b) => {
-        const durationA = a.segments.reduce((acc, segment) => acc + segment.duration, 0);
-        const durationB = b.segments.reduce((acc, segment) => acc + segment.duration, 0);
-        return durationA - durationB;
-      });
-    } else if (filter === 'optimum') {
-      return [...filteredTickets].sort((a, b) => {
-        const stopsA = a.segments.reduce((acc, segment) => acc + segment.stops.length, 0);
-        const stopsB = b.segments.reduce((acc, segment) => acc + segment.stops.length, 0);
-        return stopsA - stopsB;
-      });
-    } else {
-      return filteredTickets;
-    }
-  }, [filteredTickets, filter]);
+  const sortedTickets = useMemo(() => sortTickets(filteredTickets, filter), [filteredTickets, filter]);
 
-  const transferredTickets = produceTickets(sortedTickets);
-  const visibleFlights = transferredTickets.slice(0, flightsPerPage);
+  const transferredTickets = useMemo(() => produceTickets(sortedTickets), [sortedTickets]);
+  const visibleFlights = useMemo(
+    () => transferredTickets.slice(0, flightsPerPage),
+    [transferredTickets, flightsPerPage],
+  );
 
   return (
     <>
       {status === 'error' && <ErrorIndicator />}
-      <ul className={styles['list']}>
+      {status === 'loading' && <Loader />}
+      <div className={styles['list']}>
         {selected.length === 0 ? (
           <p className={styles['no-flights-text']}>Рейсов, подходящих под заданные фильтры, не найдено</p>
         ) : (
           visibleFlights
         )}
-      </ul>
+      </div>
     </>
   );
 }

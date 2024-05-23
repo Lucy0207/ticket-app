@@ -1,23 +1,20 @@
 import styles from './App.module.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import { flightsAction } from '../../store/flights.slice';
-import { AppDispatcher, RootState } from '../../store/store';
+import { AppDispatcher } from '../../store/store';
 import Button from '../Button/Button';
 import Filters from '../Filters/Filters';
 import Logo from '../Logo/Logo';
 import TicketList from '../TicketList/TicketList';
 import TransferPanel from '../TransferPanel/TransferPanel';
-import Loader from '../UI/Loader/Loader';
-
 
 export default function App() {
   const dispatch = useDispatch<AppDispatcher>();
-  const status = useSelector((s: RootState) => s.flights.status);
-  
 
-  const showMoreTickets = () => {
+  const showMoreTickets = useCallback(() => {
     dispatch(flightsAction.showMoreTickets());
-  };
+  }, [dispatch]);
 
   return (
     <div className={styles['page']}>
@@ -31,7 +28,7 @@ export default function App() {
 
         <div className={styles['content']}>
           <Filters />
-          {status === 'loading' && <Loader />}
+
           <TicketList />
           <Button appearance="big" onClick={showMoreTickets}>
             показать еще 5 билетов!

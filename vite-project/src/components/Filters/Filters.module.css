@@ -5,27 +5,31 @@
   right: 0;
   left: 0;
   li {
-      display: inline;
-      cursor: default;
-  
-      &:first-child {
-        button {
-          border-top-left-radius: 5px;
-          border-bottom-left-radius: 5px;
-        }
+    display: inline;
+    cursor: default;
+
+    &:first-child {
+      button {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
       }
-  
-      &:last-child {
-        button {
-          border-top-right-radius: 5px;
-          border-bottom-right-radius: 5px;
-        }
+    }
+
+    &:last-child {
+      button {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
       }
     }
   }
+}
 
-
-
+@media screen and (max-width: 480px) {
+  .filters {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+}
 
 .clicked {
   background-color: var(--highlight-color);

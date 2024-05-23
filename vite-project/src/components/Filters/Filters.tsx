@@ -4,7 +4,6 @@ import { filterAction } from '../../store/filter.slice';
 import { AppDispatcher, RootState } from '../../store/store';
 import Button from '../Button/Button';
 
-
 export default function Filters() {
   const filterOptions = [
     { value: 'cheap', label: 'самый дешевый' },

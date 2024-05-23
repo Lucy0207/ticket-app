@@ -1,5 +1,6 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import axios, { AxiosError } from 'axios';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+import { getSearchId } from '../services/searchService';
 
 export interface Flight {
   price: number;
@@ -29,24 +30,6 @@ const initialState: FlightList = {
   status: 'init',
 };
 
-export const getSearchId = createAsyncThunk('flights/getSearchId', async () => {
-  try {
-    const res = await axios.get('https://aviasales-test-api.kata.academy/search');
-
-    const { data } = await axios.get('https://aviasales-test-api.kata.academy/tickets', {
-      params: {
-        searchId: res.data.searchId,
-      },
-    });
-
-    return data;
-  } catch (e) {
-    if (e instanceof AxiosError) {
-      throw new Error(e.response?.data.message);
-    }
-  }
-});
-
 export const flightSlice = createSlice({
   name: 'flights',
   initialState,
@@ -59,28 +42,35 @@ export const flightSlice = createSlice({
       const transferCount = action.payload;
       if (transferCount === 4) {
         state.filteredTickets = [...state.tickets];
+      } else {
+        const transfers = tickets.filter((ticket) => {
+          const totalStops = ticket.segments.every((segment) => segment.stops.length === transferCount);
+          return totalStops;
+        });
+        state.filteredTickets = [...transfers];
       }
-      const transfers = tickets.filter((ticket) => {
-        const totalStops = ticket.segments.every((segment) => segment.stops.length === transferCount);
-        return totalStops;
-      });
-      state.filteredTickets = [...state.filteredTickets, ...transfers];
     },
     removeTransferTickets: (state, action: PayloadAction<number>) => {
       const { filteredTickets } = state;
       const transferCountOut = action.payload;
-      const transfersOut = filteredTickets.filter((ticket) => {
-        const totalStops = ticket.segments.every((segment) => segment.stops.length !== transferCountOut);
-        return totalStops;
-      });
-      state.filteredTickets = [...transfersOut];
+      if (transferCountOut === 4) {
+        state.filteredTickets = [];
+      } else {
+        const transfersOut = filteredTickets.filter((ticket) => {
+          const totalStops = ticket.segments.every((segment) => segment.stops.length !== transferCountOut);
+          return totalStops;
+        });
+        state.filteredTickets = [...transfersOut];
+      }
+    },
+    addMoreTickets: (state, action: PayloadAction<Flight[]>) => {
+      state.tickets = [...state.tickets, ...action.payload];
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getSearchId.fulfilled, (state, action) => {
+      .addCase(getSearchId.fulfilled, (state) => {
         state.status = 'success';
-        state.tickets = action.payload.tickets;
       })
       .addCase(getSearchId.pending, (state) => {
         state.status = 'loading';

@@ -5,7 +5,6 @@ import { AppDispatcher, RootState } from '../../store/store';
 import { transferAction } from '../../store/transfer.slice';
 import { Checkbox } from '../Checkbox/Checkbox';
 
-
 type TransferValue = {
   description: string;
   value: number;
@@ -22,7 +21,6 @@ export default function TransferPanel() {
   ];
   const dispatch = useDispatch<AppDispatcher>();
   const selected = useSelector((s: RootState) => s.transfers.selected);
-
 
   function handleSelect(checkSelect: boolean, name: string): void {
     if (checkSelect) {

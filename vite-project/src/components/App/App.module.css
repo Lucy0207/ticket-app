@@ -7,3 +7,12 @@
   justify-content: center;
   gap: 20px;
 }
+
+@media screen and (max-width: 480px) {
+  .page {
+    min-width: 320px;
+  }
+  .wrapper {
+    min-width: 754px;
+  }
+}

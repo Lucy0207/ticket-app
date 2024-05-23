@@ -1,4 +1,5 @@
 :root {
+  box-sizing: border-box;
   --font: 'Open Sans', sans-serif;
   --primary-color: rgb(74, 74, 74);
   --text-secondary-color: rgb(160, 176, 185);

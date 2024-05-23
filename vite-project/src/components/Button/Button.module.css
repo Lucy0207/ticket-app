@@ -10,10 +10,6 @@
   letter-spacing: 0.5px;
   text-align: center;
   text-transform: uppercase;
-  &:hover {
-      color: var(--white-color);;
-      background: var(--highlight-color);
-    }
 }
 
 .small {
@@ -25,6 +21,7 @@
   width: 502px;
   background-color: var(--highlight-color);
   color: var(--white-color);
+  margin-top: 20px;
+  margin-bottom: 15px;
+  border-radius: 5px;
 }
-
-
